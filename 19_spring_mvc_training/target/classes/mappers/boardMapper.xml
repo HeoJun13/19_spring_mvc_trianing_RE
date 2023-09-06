@@ -35,14 +35,13 @@
 				BOARD_ID = #{boardId}
 	</select>
 	
-	<select id="selectOnePasswd" parameterType="long" resultType="string">
+	<select id="selectOnePasswd" parameterType="long" resultType="String">
 		SELECT
 				PASSWD
-		FROM
+		FROM	
 				BOARD
 		WHERE
 				BOARD_ID = #{boardId}
-	
 	</select>
 	
 	<update id="updateReadCnt" parameterType="long">
@@ -53,6 +52,7 @@
 		WHERE
 				BOARD_ID = #{boardId}
 	</update>
+	
 	
 	<update id="updateBoard" parameterType="BoardDTO">
 		UPDATE
@@ -71,12 +71,6 @@
 		WHERE 
 				BOARD_ID = #{boardId}
 	</delete>
-	
-	
-	
-	
-	
-	
 	
 	
 	
