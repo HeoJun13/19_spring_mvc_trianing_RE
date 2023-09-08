@@ -108,7 +108,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	@Scheduled(cron="59 59 23 * * *")
+	@Scheduled(cron="0 0 21 * * *")
 	public void getTodayNewMemberCnt() throws Exception {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
