@@ -9,8 +9,13 @@
  	</definition>
  	
  	<definition name="/MemberPT/register"  extends="loyout">	
- 		<put-attribute name="body" value="/WEB-INF/views/member/contents/registerMember.jsp"/>	
+ 		<put-attribute name="body" value="/WEB-INF/views/member/contents1/registerMember.jsp"/>	
  		<put-attribute name="title"   value="회원가입"/> 		
+ 	</definition>
+ 	
+ 	<definition name="/MemberPT/memberList"  extends="loyout">	
+ 		<put-attribute name="body" value="/WEB-INF/views/member/contents/memberList.jsp"/>	
+ 		<put-attribute name="title"   value="회원리스트"/> 		
  	</definition>
 			 	
 </tiles-definitions>

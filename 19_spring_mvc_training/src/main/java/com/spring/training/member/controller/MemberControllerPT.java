@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.training.member.dto.MemberDTO;
+import com.spring.training.member.service.MemberService;
 import com.spring.training.member.service.MemberSevicePT;
 
 
@@ -29,6 +32,8 @@ import com.spring.training.member.service.MemberSevicePT;
 public class MemberControllerPT {
 	
 	private String FILE_REPO_PATH = "C:\\spring_mvc_member_file_repo\\";
+	//private String FILE_REPO_PATH = 
+	
 	
 	@Autowired
 	private MemberSevicePT memberSevicePT;
@@ -53,9 +58,46 @@ public class MemberControllerPT {
 			}
 		
 		}
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setMemberId(multipartRequest.getParameter("memberId"));
+		memberDTO.setPasswd(multipartRequest.getParameter("passwd"));
+		memberDTO.setProfile(multipartRequest.getParameter("memberNm"));
+		memberDTO.setSex(multipartRequest.getParameter("sex"));
+		memberDTO.setBirthDt(multipartRequest.getParameter("birthDt"));
+		memberDTO.setHp(multipartRequest.getParameter("hp"));
+		
+		if (multipartRequest.getParameter("smsstsYn") == null) {
+			memberDTO.setSmsstsYn("N");
+		}
+		else
+			memberDTO.setSmsstsYn("Y");
+		
+		memberDTO.setEmail(multipartRequest.getParameter("email"));
+		
+		if (multipartRequest.getParameter("emailstsYn") == null) {
+			memberDTO.setEmailstsYn("N");
+		}else
+			memberDTO.setEmailstsYn("Y");
+			
+		
+		memberDTO.setZipcode(multipartRequest.getParameter("zipcode"));
+		memberDTO.setRoadAddress(multipartRequest.getParameter("roadaddress"));
+		memberDTO.setJibunAddress(multipartRequest.getParameter("jibunaddress"));
+		memberDTO.setEtc(multipartRequest.getParameter("etc"));
+		
+		
+		memberSevicePT.addMember(memberDTO);
+		
+	
 		return null;
 		
 		
+	}
+	
+	@GetMapping("/memberList")
+	public ModelAndView memberList() {
+		return new ModelAndView("/MemberPT/memberList");
 	}
 	
 }
